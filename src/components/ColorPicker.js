@@ -1,28 +1,21 @@
+// ColorPicker.jsx
 import React, { useState } from 'react';
 import { CirclePicker } from 'react-color';
 import './ColorPicker.css';
 
-const ColorPicker = () => {
+// ColorPicker component
+const ColorPicker = ({ colors = defaultColors, circleSize = 28, circleSpacing = 8 }) => {
   // State to store the selected color and the copied status
   const [selectedColor, setSelectedColor] = useState('');
   const [isCopied, setIsCopied] = useState(false);
 
-  // Array of colors with their main color and shades
-  const colors = [
-    { name: 'Red', main: '#FF0000', shades: ['#FF4D4D', '#FF8080', '#FFB3B3', '#FFE6E6'] },
-    { name: 'Blue', main: '#0000FF', shades: ['#4D4DFF', '#8080FF', '#B3B3FF', '#E6E6FF'] },
-    { name: 'Yellow', main: '#FFFF00', shades: ['#FFFF4D', '#FFFF80', '#FFFFB3', '#FFFFE6'] },
-    { name: 'Green', main: '#008000', shades: ['#00B300', '#00CC00', '#00E600', '#80FF80'] },
-    { name: 'Orange', main: '#FFA500', shades: ['#FFB84D', '#FFCC80', '#FFE0B3', '#FFF5E6'] },
-    { name: 'Purple', main: '#800080', shades: ['#B300B3', '#CC00CC', '#E600E6', '#FF80FF'] },
-  ];
-
   // Function to handle color change
   const handleColorChange = (color) => {
     setSelectedColor(color.hex);
-    setIsCopied(true);
     navigator.clipboard.writeText(color.hex);
+    setIsCopied(true);
   };
+
 
   return (
     <div className="color-picker">
@@ -37,8 +30,8 @@ const ColorPicker = () => {
               color={selectedColor}
               onChangeComplete={handleColorChange}
               colors={[color.main, ...color.shades]}
-              circleSize={28}
-              circleSpacing={8}
+              circleSize={circleSize}
+              circleSpacing={circleSpacing}
             />
           </div>
         ))}
@@ -59,6 +52,23 @@ const ColorPicker = () => {
       </div>
     </div>
   );
+};
+
+// Default colors
+const defaultColors = [
+  { name: 'Red', main: '#FF0000', shades: ['#FF4D4D', '#FF8080', '#FFB3B3', '#FFE6E6'] },
+  { name: 'Blue', main: '#0000FF', shades: ['#4D4DFF', '#8080FF', '#B3B3FF', '#E6E6FF'] },
+  { name: 'Yellow', main: '#FFFF00', shades: ['#FFFF4D', '#FFFF80', '#FFFFB3', '#FFFFE6'] },
+  { name: 'Green', main: '#008000', shades: ['#00B300', '#00CC00', '#00E600', '#80FF80'] },
+  { name: 'Orange', main: '#FFA500', shades: ['#FFB84D', '#FFCC80', '#FFE0B3', '#FFF5E6'] },
+  { name: 'Purple', main: '#800080', shades: ['#B300B3', '#CC00CC', '#E600E6', '#FF80FF'] },
+];
+
+// Set default props
+ColorPicker.defaultProps = {
+  colors: defaultColors,
+  circleSize: 28,
+  circleSpacing: 8,
 };
 
 export default ColorPicker;

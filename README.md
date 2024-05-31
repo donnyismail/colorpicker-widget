@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# Color Picker Widget
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a reusable and responsive React component that allows users to select colors from a predefined set of primary and secondary colors, along with their shades. The selected color's hex value is automatically copied to the clipboard for easy use.
 
-## Available Scripts
+## Assessment Guidelines
 
-In the project directory, you can run:
+This project was developed as part of a technical assessment with the following objectives:
 
-### `npm start`
+1. **Color Selection**: Implement a user-friendly interface that allows selection among three primary colors (red, blue, yellow) and three secondary colors (green, orange, purple). Each color should display four to five shades for users to choose from. When the user selects a color hex value, it should be copied to the clipboard.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Widget Reusability**: Design the widget with modularity in mind, ensuring it can be dropped into any page and work independently. The widget should not rely on global styles or scripts that could interfere with the host page's functionality.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Responsive and Adaptive Design**: The widget should adapt to flexible dimensions, maintaining usability and aesthetic integrity across different screen sizes and resolutions.
 
-### `npm test`
+4. **Clean and Maintainable Code**: Write clear, maintainable code following best practices and React's design principles. Component structure should be logical and well-organized, with a focus on performance and scalability.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. **Accessibility**: Ensure the widget is accessible, following WAI-ARIA guidelines where applicable. It should be navigable through keyboard and screen readers.
 
-### `npm run build`
+## Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project uses the following dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `react-color`: A collection of React UI components for picking colors.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+1. Clone the repository:
+git clone https://github.com/your-repo/color-picker-widget.git
+Copy code
+2. Navigate to the project directory:
+cd color-picker-widget
+Copy code
+3. Install dependencies:
+npm install
+Copy code
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Import the `ColorPicker` component into your React app:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```jsx
+import ColorPicker from './components/ColorPicker';
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Use the ColorPicker component in your JSX:
+jsxCopy code<ColorPicker />
+This will render the color picker widget with the default set of colors and their shades.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Props
+The ColorPicker component accepts the following props:
 
-## Learn More
+colors (array, optional): An array of color objects, where each object represents a color group with the following properties:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+name (string): The name of the color group.
+main (string): The hex code for the main color.
+shades (array of strings): An array of hex codes for the shades of the color.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+circleSize (number, optional, default: 28): The size of the color circles in pixels.
+circleSpacing (number, optional, default: 8): The spacing between the color circles in pixels.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Example with Custom Props
+jsxCopy codeimport React from 'react';
+import ColorPicker from './components/ColorPicker';
 
-### Analyzing the Bundle Size
+const App = () => {
+  const customColors = [
+    {
+      name: 'Crimson',
+      main: '#DC143C',
+      shades: ['#FF6B6B', '#FF8C8C', '#FFB2B2', '#FFD9D9'],
+    },
+    {
+      name: 'Navy',
+      main: '#000080',
+      shades: ['#4D4D99', '#8080B3', '#B3B3CC', '#E6E6FF'],
+    },
+  ];
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  return (
+    <div>
+      <h1>Color Picker Widget</h1>
+      <ColorPicker colors={customColors} circleSize={32} circleSpacing={12} />
+    </div>
+  );
+};
 
-### Making a Progressive Web App
+export default App;
+In this example, we're passing a custom array of color groups (customColors) along with a circleSize of 32 and a circleSpacing of 12 to the ColorPicker component.
+Development
+To start the development server, run:
+Copy codenpm start
+This will start the development server and open the app in your default browser.
+Build
+To create a production build, run:
+Copy codenpm run build
+This will create a optimized production build in the build directory.
+Accessibility
+The color picker widget follows accessibility best practices, including:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Proper keyboard navigation and focus management.
+Appropriate aria-labels and alt text for color circles and interactive elements.
+Adherence to color contrast guidelines for improved visibility.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. can you put this in a single block of code for a readme

@@ -1,4 +1,4 @@
-/* Styles for the color picker container */
+/* ColorPicker.css */
 .color-picker {
   max-width: 600px;
   margin: 0 auto;
@@ -8,36 +8,29 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Center the header */
 .color-picker h2 {
   text-align: center;
 }
 
-/* Styles for the color section */
 .color-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   margin-bottom: 20px;
 }
 
-/* Styles for each color item */
 .color-item {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Styles for the color item heading */
-.color-item h3 {
-  margin-bottom: 10px;
-}
-
-/* Styles for the selected color section */
 .selected-color-section {
   text-align: center;
   margin-top: 20px;
 }
 
-/* Styles for the selected color display */
 .selected-color {
   display: flex;
   align-items: center;
@@ -45,7 +38,6 @@
   margin-bottom: 10px;
 }
 
-/* Styles for the selected color preview */
 .color-preview {
   width: 60px;
   height: 60px;
@@ -54,7 +46,29 @@
   border: 1px solid #ccc;
 }
 
-/* Styles for the copied message */
 .copied-message {
   color: #28a745;
+  font-weight: bold;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .color-picker {
+    padding: 10px;
+  }
+
+  .color-section {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .color-preview {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .color-item {
+    flex-direction: row;
+  }
 }
