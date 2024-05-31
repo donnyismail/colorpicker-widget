@@ -1,0 +1,68 @@
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .color-picker h2 {
+    margin-bottom: 20px;
+  }
+  
+  .circle-picker {
+    margin-bottom: 20px;
+  }
+  
+  .selected-color {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .selected-color-swatch {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .selected-color-value {
+    font-weight: bold;
+  }
+  
+  .copy-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .copy-button:hover {
+    background-color: #45a049;
+  }
+  
+  .copy-button:active {
+    background-color: #3e8e41;
+  }
+  
+  .copy-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.4);
+  }
+  
+  .copied-message {
+    margin-top: 10px;
+    color: #4caf50;
+    font-size: 14px;
+  }

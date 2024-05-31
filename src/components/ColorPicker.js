@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CirclePicker } from 'react-color';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import './ColorPicker.css';
 
 const ColorPicker = () => {
   const [selectedColor, setSelectedColor] = useState('');
@@ -16,7 +17,7 @@ const ColorPicker = () => {
   };
 
   return (
-    <div>
+    <div className="color-picker">
       <CirclePicker
         color={selectedColor}
         onChangeComplete={handleColorChange}
@@ -24,13 +25,13 @@ const ColorPicker = () => {
       />
       <div>
         <CopyToClipboard text={selectedColor} onCopy={handleCopy}>
-          <button>Copy Color</button>
+          <button className="copy-button">Copy Color</button>
         </CopyToClipboard>
-        {isCopied && <span>Copied!</span>}
+        {isCopied && <span className="copied-message">Copied!</span>}
       </div>
-      <div>Selected Color: {selectedColor}</div>
+      <div className="selected-color">Selected Color: {selectedColor}</div>
     </div>
   );
-};
+}
 
 export default ColorPicker;
